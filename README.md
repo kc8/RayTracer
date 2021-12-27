@@ -3,7 +3,13 @@ This is a current work in progress with many TODOs.
 This project is inspired by the "The Ray Tracer Challenge" 
 [here](https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge/) book
 
+# Here is a working example of the current Ray Tracing status: 
+
+## Small 100 X 100 Sphere/Circle
+![First Sphere](SampleImages\FirstSphere.bmp)
+
 # How to run this
+**These instructs are incomplete**
 Double clicking the EXE will produce a bitmap in your current directory.
 After building/running. These instructions are not complete, as this is not 
 a complete RayTracer.

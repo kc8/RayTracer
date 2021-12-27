@@ -371,11 +371,11 @@ namespace RayTracer.Math
         ///</summary>
         public void RotateAboutXAxis(float radian)
         {
-            this[0,0] = 1.0f;
-            this[1,1] = MathF.Cos(radian);
-            this[1,2] = -(MathF.Sin(radian));
-            this[2,1] = MathF.Sin(radian);
-            this[2,2] = MathF.Cos(radian);
+            this[0,0] *= 1.0f;
+            this[1,1] *= MathF.Cos(radian);
+            this[1,2] *= -(MathF.Sin(radian));
+            this[2,1] *= MathF.Sin(radian);
+            this[2,2] *= MathF.Cos(radian);
         }
 
         ///<summary>
@@ -384,11 +384,11 @@ namespace RayTracer.Math
         ///</summary>
         public void RotateAboutYAxis(float radian)
         {
-            this[0,0] = MathF.Cos(radian);
-            this[0,2] = MathF.Sin(radian);
-            this[1,1] = 1.0f;
-            this[2,0] = -(MathF.Sin(radian));
-            this[2,2] = MathF.Cos(radian);
+            this[0,0] *= MathF.Cos(radian);
+            this[0,2] *= MathF.Sin(radian);
+            this[1,1] *= 1.0f;
+            this[2,0] *= -(MathF.Sin(radian));
+            this[2,2] *= MathF.Cos(radian);
         }
 
         ///<summary>
@@ -397,11 +397,11 @@ namespace RayTracer.Math
         ///</summary>
         public void RotateAboutZAxis(float radian)
         {
-            this[0,0] = MathF.Cos(radian);
-            this[0,1] = -(MathF.Sin(radian));
-            this[1,0] = MathF.Sin(radian);
-            this[1,1] = MathF.Cos(radian);
-            this[2,2] = 1.0f; // TODO in the rotation matrixs, is this correct?
+            this[0,0] *= MathF.Cos(radian);
+            this[0,1] *= -(MathF.Sin(radian));
+            this[1,0] *= MathF.Sin(radian);
+            this[1,1] *= MathF.Cos(radian);
+            this[2,2] *= 1.0f; // TODO in the rotation matrixs, is this correct?
         }
 
         ///<summary>

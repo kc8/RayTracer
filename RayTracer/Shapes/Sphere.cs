@@ -7,9 +7,24 @@ namespace RayTracer.Shapes
     public class Sphere : Shape
     {
         public float Radius { get; set; } = 1.0f;
-        public V4 Center { get; set; } = new V4(0.0f);
+        public V4 Center { get; set; } = new V4(0.0f); 
 
         public M4 CurrentTransform { get; private set; } = M4.CreateIdentityMatrix();
+
+        private V4 _Normal = new V4(0.0f);
+        public V4 Normal 
+        {
+           get 
+           {
+              return _Normal;
+           }
+           set 
+           {
+              V4 unNormalNormal = value - Center; 
+              V4 result = unNormalNormal.Normalize();
+              _Normal = result; 
+           }
+        }
 
         public Sphere()
         {
@@ -137,6 +152,28 @@ namespace RayTracer.Shapes
         {
            CurrentTransform = m * CurrentTransform;
            Center = CurrentTransform * Center;
+        }
+
+        ///<summary>
+        /// Compute set and return a normal for the given sphere
+        /// NOTE: this value may need to be normalized
+        ///</summary>
+        public V4 NormalizedNormalAt(V4 point)
+        {
+           V4 unNormalNormal = point - Center; 
+           V4 result = unNormalNormal.Normalize();
+           return result; 
+        }
+
+        ///<summary>
+        /// Compute set and return a normal for the given sphere
+        /// NOTE: this value may need to be normalized
+        ///</summary>
+        public V4 NormalAt(V4 point)
+        {
+           V4 unNormalNormal = point - Center; 
+           _Normal = unNormalNormal; 
+           return unNormalNormal; 
         }
     }
 }

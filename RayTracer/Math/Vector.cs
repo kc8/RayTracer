@@ -143,16 +143,24 @@ namespace RayTracer.Math
         ///<summary> 
         public V4 Normalize()
         {
-            float magnitude = this.Magnitude();  
-            if (magnitude == 0) 
-            {
-                return this; 
-            } 
-            Vector128<float> denom = Vector128.Create(magnitude); 
-            Vector128<float> num = Vector128.Create(X, Y, Z, W); 
-            Vector128<float> normal = Sse.Divide(num, denom); 
-            V4  result = CreateVectorFromSIMD(normal); 
-            return result; 
+           //bool x = //X >= 1.0f; // && X <= 0.0f;
+            bool y = Y >= 0.0f && Y <= 0.0f;; 
+           System.Console.WriteLine(y);
+            //Z >= 1.0f && Z <= 0.0f && 
+            //W >= 1.0f && W <= 0.0f)
+           {
+               //return this; 
+           }
+           float magnitude = this.Magnitude();  
+           if (magnitude == 0) 
+           {
+               return this; 
+           } 
+           Vector128<float> denom = Vector128.Create(magnitude); 
+           Vector128<float> num = Vector128.Create(X, Y, Z, W); 
+           Vector128<float> normal = Sse.Divide(num, denom); 
+           V4  result = CreateVectorFromSIMD(normal); 
+           return result; 
         }
 
         ///<summary> 
@@ -179,7 +187,6 @@ namespace RayTracer.Math
             float result1 = Vector128.GetElement<float>(sqrt, 1); 
             float result2 = Vector128.GetElement<float>(sqrt, 2); 
             float result3 = Vector128.GetElement<float>(sqrt, 3); 
-            System.Console.WriteLine("{0}, {1}, {2}, {3}", result, result1, result2, result3);
             return result; 
         }
 

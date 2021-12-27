@@ -57,5 +57,12 @@ namespace RayTracer
             result.Direction = r.Direction;
             return result; 
          }
+
+         public override string ToString() 
+         {
+            string result =
+               $@" Direction: {Direction} | Origin: {Origin} | Time: {Time}";
+            return result;
+         }
     }
 }

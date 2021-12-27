@@ -227,17 +227,29 @@ namespace RayTracerTests
             M4 scalingInvert = scaling.Invert();
             Ray scaledRay = Ray.Scale(r, scalingInvert);
             Intersection[] intersections = s.Intersect(scaledRay);
-            System.Console.WriteLine(scalingInvert); 
-            System.Console.WriteLine(scaledRay.Origin);
-            System.Console.WriteLine(scaledRay.Direction);
-            System.Console.WriteLine(s.CurrentTransform);
-            System.Console.WriteLine(s.Center);
-            System.Console.WriteLine(intersections[0].Time);
-            System.Console.WriteLine(intersections[1].Time);
             Assert.True(intersections[0].Time == 3.0f, 
                    $@"Intersection was incorrect with {intersections[0].Time} not being 3.0f"); 
-            Assert.True(intersections[1].Time == 7.0f, 
+            Assert.True(intersections[1].Time == 7.0I, 
                    $@"Intersection was incorrect with {intersections[1].Time} not being 7.0f"); 
+        }
+
+        [Test] 
+        // pg 69
+        /// Scale a ray by the inverse of how you want to scale the sphere
+        public void RayInteractionTests_SphereTranslatedWithRay()
+        {
+            Sphere s = new Sphere(); 
+            Ray r = new Ray(new V4(0, 0, -5, 1.0f), new V4(0, 0, 1, 1.0f));
+            M4 scaling = M4.CreateTranslationMatrix(new V4(5, 0, 0, 0));
+            s.Translate(scaling);
+
+            //M4 scalingInvert = scaling.Invert();
+            Ray scaledRay = Ray.Translate(r, scaling);
+            Intersection[] intersections = s.Intersect(scaledRay);
+            Assert.True(intersections[0].Time == -1.0f, 
+                   $@"Intersection was incorrect with {intersections[0].Time} not being -1.0f"); 
+            Assert.True(intersections[1].Time == -1.0f, 
+                   $@"Intersection was incorrect with {intersections[1].Time} not being -1.0f"); 
         }
     }
 }

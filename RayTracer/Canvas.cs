@@ -4,7 +4,6 @@ using System.Drawing.Imaging;
 
 using RayTracer.Colors;
 
-
 namespace RayTracer
 {
     public interface IImage 
@@ -17,7 +16,7 @@ namespace RayTracer
         ///<summary> 
         /// We want to commit this frame to the saving/displaying method
         ///<summary> 
-        void Commit(); 
+        void Commit(string fileName = "test.bmp"); 
     }
 
     ///<summary>
@@ -70,9 +69,9 @@ namespace RayTracer
             throw new NotImplementedException("GET PIXEL NEEDS TO CONVERT FROM 0,255 to 0f-1f"); 
         }
 
-        public void Commit() 
+        public void Commit(string fileName = "test.bmp") 
         {
-            _Bitmap.Save("test.bmp", ImageFormat.Bmp); 
+            _Bitmap.Save(fileName, ImageFormat.Bmp); 
         }
 
         ///<summary>
