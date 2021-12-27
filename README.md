@@ -6,7 +6,7 @@ This project is inspired by the "The Ray Tracer Challenge"
 # Here is a working example of the current Ray Tracing status: 
 
 ## Small 100 X 100 Sphere/Circle
-![First Sphere](SampleImages\FirstSphere.bmp)
+![First Sphere](https://raw.githubusercontent.com/kc8/RayTracer/master/SampleImages/FirstSphere.bmp)
 
 # How to run this
 **These instructs are incomplete**
